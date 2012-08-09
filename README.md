@@ -13,3 +13,7 @@ Requirements :
 
 * Fill a word if correctly answered by a participant/team based on First Come First Serve principle and disable it for further attempts.
 * As soon as a word is filled, all involved clients (administrator, participant, spectator) should see the change.
+
+
+Future Aims : 
+* Given the words to be used in the crossword and the corresponding hints, the program should generate a crossword.
