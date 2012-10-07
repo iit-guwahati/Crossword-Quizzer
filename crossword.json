@@ -1,0 +1,21 @@
+{
+	"title":"Random",
+	"description":"Normal crossword",
+	"width": 13,
+	"height": 7,
+	"clues": [
+		{"position": "0,0", "direction":"across", "clue":"Fate, destiny.", "answer":"kismet"},
+		{"position": "0,1", "direction":"down", "clue":"Sudden urge or inclination.", "answer":"impulse"},
+		{"position": "0,3", "direction":"down", "clue":"A grinding tooth.", "answer":"molar"},
+		{"position": "0,5", "direction":"down", "clue":"Shiver.", "answer":"tremble"},
+		{"position": "4,0", "direction":"across", "clue":"Stain, insult.", "answer":"slur"},
+		{"position": "2,2", "direction":"across", "clue":"Noisy, disruptive ghost.", "answer":"poltergeist"},
+		{"position": "0,7", "direction":"across", "clue":"Resolve, e.g. an argument.", "answer":"settle"},
+		{"position": "0,7", "direction":"down", "clue":"It could be from cane or beef.", "answer":"sugar"},
+		{"position": "0,9", "direction":"down", "clue":"Popular name for a tornado.", "answer":"twister"},
+		{"position": "0,11", "direction":"down", "clue":"Language of ancient Rome.", "answer":"latin"},
+		{"position": "4,5", "direction":"across", "clue":"Deep-toned male voice.", "answer":"baritone"},
+		{"position": "6,0", "direction":"across", "clue":"Insect and name applied to a certain small car.", "answer":"beetle"},
+		{"position": "6,7", "direction":"across", "clue":"Sudden, rude.", "answer":"abrupt"}
+	]
+}

@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Crossword Quizzer</title>
+	<link rel="stylesheet" type="text/css" href="crossword.css" />
+	<script type="text/javascript" src="jquery-1.3.2.js"></script>
+	<script type="text/javascript" src="crosswordsocket.js"></script>
+</head>
+<body>
+	<div id="players" class="bottom">
+	</div>
+	<div id="preGame" class="splash" align="center" style="z-index: 100; background-color:grey; ">
+		<h2 id="status">Connecting</h2>
+		<div id="statusline2"><h4>Please wait</h4></div>
+	</div>
+	<div id="crossword" class="splash">
+		<div id="board">
+		</div>
+		<div id="clues">
+			<div>
+				Across clues
+				<div id="acrossClues">
+			
+				</div>
+			</div>
+			<div>
+				Down clues
+				<div id="downClues">
+			
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

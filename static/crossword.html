@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Crossword Quizzer</title>
+	<link rel="stylesheet" type="text/css" href="crossword.css" />
+	<script type="text/javascript" src="jquery-1.3.2.js"></script>
+	<script type="text/javascript" src="crosswordsocket.js"></script>
+</head>
+<body>
+	<div id="players" class="bottom" align="center">
+		
+	</div>
+	<div id="preGame" class="splash" align="center" style="z-index: 100; background-color:grey; ">
+		<h2 id="status">Connecting</h2>
+		<div id="statusline2"><h4>Please wait</h4></div>
+	</div>
+	<div id="crossword" class="splash">
+		<div id="crosswordBoardAndClues" class="splash">
+			<div id="board" align="center">
+			</div>
+			<div id="clues">
+				<div id="acrossClues" class="cluelist">
+					<div align="center" style="background-color: grey"><b>Across clues</b></div>
+				
+				</div>
+				<div id="downClues" class="cluelist">
+					<div align="center" style="background-color: grey;"><b>Down clues</b></div>
+				
+				</div>
+			</div>
+		</div>
+		<div id="guessStuff">
+			<div id="guessHelper">Click on a clue to enter your guess.</div>
+			<form action="javascript:guess()">
+			<input type="text" class="guessStuff" id="guessBox" disabled="true" />
+			</form>
+			<input type="button" class="guessStuff" onclick="guess()" disabled="true" value="Guess" />
+			<input type="button" class="guessStuff" onclick="clearGuess()" disabled="true" value="Cancel" /> 
+		</div>
+	</div>
+</body>
+</html>
