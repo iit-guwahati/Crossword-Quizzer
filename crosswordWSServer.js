@@ -24,6 +24,7 @@ module.exports.attachNewCrosswordServer = function (httpServer, crosswordServerO
 		var playerIndex=false;
 		var playerName=false;
 		var playerColour=false;
+		var admin=false;
 	
 		if(started){
 			playerScores = players.map(function (x) { return { name: x.name, colour: x.colour, score: x.score }; });
@@ -42,14 +43,16 @@ module.exports.attachNewCrosswordServer = function (httpServer, crosswordServerO
 			if(message.type === 'utf8'){
 				messageParts = message.utf8Data.split(" ");
 				if(messageParts[0] === 'startGame' && !started)
-					if(messageParts[1] === password)
+					if(messageParts[1] === password){
 						startGame();
+						admin=true;
+					}
 	
 				//Message received from a person who is not (yet) a player. Only register is accepted.
 				if(!playerName){
 					if(messageParts[0] === 'register' && !started)
 						handleRegisterRequest(message);
-				} else {
+				} else if(!admin){
 					if(messageParts[0] === 'guess'){
 						handleGuess(messageParts[1],messageParts[2]);
 					} else if(messageParts[0] === 'typing'){
@@ -61,6 +64,12 @@ module.exports.attachNewCrosswordServer = function (httpServer, crosswordServerO
 							client.sendUTF(JSON.stringify({ type:'updateStatus', name: playerName, status: "Thinking" }));
 						});
 					}
+				} else {
+					if(messageParts[0]=="stopGame")
+						stopGame();
+					if(messageParts[0]=="broadcast")
+						allClients.forEach(function (client){
+							client.sendUTF(JSON.stringify({ type:'adminMessage', message: messageParts.slice(1).join(" ") }));
 				}
 			}
 		});
@@ -124,13 +133,13 @@ module.exports.attachNewCrosswordServer = function (httpServer, crosswordServerO
 					client.sendUTF(JSON.stringify({ type:'updateBoard', clueKey: clueKey, answer: guess.toUpperCase(), colour: playerColour }));
 				});
 				playByPlay.push({ type:'updateBoard', clueKey: clueKey, answer: guess.toUpperCase(), colour: playerColour });
-				checkIfFinished();
+				if(playByPlay.length == Object.keys(crosswordServerObject.clientCrossword.clues).length)
+					stopGame();
 			}
 		}
 
-		function checkIfFinished() {
+		function stopGame() {
 			var scores, i, l;
-			if(!(playByPlay.length == Object.keys(crosswordServerObject.clientCrossword.clues).length))	return;
 			finished=true;
 			allClients.forEach(function (client){
 				client.sendUTF(JSON.stringify({ type:'crosswordComplete' }));
