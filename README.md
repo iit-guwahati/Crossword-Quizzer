@@ -25,8 +25,8 @@ Crossword-Quizzer
 Tested only in Chrome 20+, this application is for holding a multiplayer realtime competitive crosssword.
 Still in its making, the app runs on node.js, invoked by "node server.js" and plays the crossword in crossword.json.
 It serves the necessary files and no apache server is required.
-The IP of the server needs to be changed in static/crosswordsocket.js and static/admin/crosswordsocket.js.
-Clients go to ip_of_server:8081. An admin goes to ip_of_server:8081/admin and starts the game by entering the password in crosswordWSServer.js.
+The IP of the server needs to be set in serverConfig.js
+Clients go to ip_of_server:8081. An admin goes to ip_of_server:8081/admin and starts the game by entering the password located in crosswordWSServer.js.
 crosswordWSServer.js also has the logic for assigning points to an answer, because it needs changing.
 
 Have fun :)

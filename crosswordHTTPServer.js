@@ -12,6 +12,9 @@ module.exports.server = http.createServer(function (req, res) {
   if(fileReq=="/admin")	fileReq="/crossword.html";
   if(fileReq.search("\\\.\\\.") != -1)	fileReq="/sdgbhjhfj";
 
+  //Those rare files that are to be sent
+  if(fileReq=="/serverConfig.js" || fileReq=="/admin/serverConfig.js") fileReq="/../serverConfig.js";
+
   //Fetching and sending file
   exists = fs.existsSync('static'+fileReq);
   if(!exists){

@@ -9,7 +9,7 @@
 		{"position": "0,3", "direction":"down", "clue":"A grinding tooth.", "answer":"molar"},
 		{"position": "0,5", "direction":"down", "clue":"Shiver.", "answer":"tremble"},
 		{"position": "4,0", "direction":"across", "clue":"Stain, insult.", "answer":"slur"},
-		{"position": "2,2", "direction":"across", "clue":"Noisy, disruptive ghost.", "answer":"poltergeist"},
+		{"position": "2,1", "direction":"across", "clue":"Noisy, disruptive ghost.", "answer":"poltergeist"},
 		{"position": "0,7", "direction":"across", "clue":"Resolve, e.g. an argument.", "answer":"settle"},
 		{"position": "0,7", "direction":"down", "clue":"It could be from cane or beef.", "answer":"sugar"},
 		{"position": "0,9", "direction":"down", "clue":"Popular name for a tornado.", "answer":"twister"},

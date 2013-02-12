@@ -8,7 +8,7 @@ $(function () {
     // if user is running mozilla then use its built-in WebSocket
     window.WebSocket = window.WebSocket || window.MozWebSocket;
 
-    connection = new WebSocket('ws://127.0.0.1:8081');
+    connection = new WebSocket("ws://"+serverIP+":8081");
 
     console.log(connection);
     connection.onopen = function () {
