@@ -3,6 +3,7 @@ var crosswordCells=false;
 var crossword=false;
 var currentClue=false;
 var players = {};
+var playerName = false;
 
 $(function () {
     // if user is running mozilla then use its built-in WebSocket
@@ -14,6 +15,7 @@ $(function () {
     connection.onopen = function () {
         $('#status').html("Enter your name to play or wait for the game to start to spectate.");
 	$('#statusline2').html("<form action=\"javascript:register()\"><input type=\"text\" id=\"registername\"/><input type=\"button\" onclick=\"register()\" value=\"Register!\" /></form>")
+	$('#registername').focus();
     };
 
     connection.onerror = function (error) {
@@ -46,9 +48,11 @@ function register(){
 
 function registration(registrationData){
 	if(registrationData.accept == "true"){
+		playerName = registrationData.name;
 		$("#status").html("You are registered as "+registrationData.name+".");
 		$("#statusline2").html("Please wait for the game to start.");
-		$('#crossword').css("border-bottom","solid "+registrationData.colour+" 2px;");
+		$('#crossword').css("border-bottom","solid "+registrationData.colour+" 4px;");
+		$('#guessStuff').css("display","block");
 	} else {
 		$("#status").html("Registration failed. Try again. Error: "+registrationData.error);
 	}
@@ -199,9 +203,15 @@ function cluelistItem(clueKey, q, length){
 
 function onmouseoverCrosswordCell() {
 	var cellClues = this.classList.toLocaleString().split(" ").filter(function (x) { return x.match("[0-9]+[ad]")==x; });
-	cellClues.forEach(function (y){ $("."+y).addClass('highlighted'); y});
-	if(cellClues.length==1)
-			this.onclick = function (){ enterGuess(cellClues[0]); }
+	cellClues.forEach(function (y){ $("."+y).addClass('highlighted'); $("#clues ."+y)[0].scrollIntoViewIfNeeded(); });
+	if(cellClues.length==1){
+		this.onclick = function (){ enterGuess(cellClues[0]); }
+	} else {
+		this.onclick = function (){
+			if(currentClue == cellClues[0])	enterGuess(cellClues[1]);
+			else	enterGuess(cellClues[0]);
+		}
+	}
 }
 
 function onmouseoutCrosswordCell() {

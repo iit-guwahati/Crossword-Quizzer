@@ -70,6 +70,7 @@ module.exports.attachNewCrosswordServer = function (httpServer, crosswordServerO
 					if(messageParts[0]=="broadcast")
 						allClients.forEach(function (client){
 							client.sendUTF(JSON.stringify({ type:'adminMessage', message: messageParts.slice(1).join(" ") }));
+						});
 				}
 			}
 		});

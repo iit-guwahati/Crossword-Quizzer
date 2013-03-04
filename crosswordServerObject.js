@@ -78,6 +78,8 @@ module.exports.addAnswer = function (clueKey, guess, playerIndex) {
 			}
 		}
 		score = 10;
+		if(noSquaresFilled==0)
+			score=0;
 	} else {
 		score = -3;
 	}
