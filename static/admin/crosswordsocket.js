@@ -8,7 +8,7 @@ $(function () {
     // if user is running mozilla then use its built-in WebSocket
     window.WebSocket = window.WebSocket || window.MozWebSocket;
 
-    connection = new WebSocket('ws://127.0.0.1:8081');
+    connection = new WebSocket('ws://'+serverIP+':8081');
 
     console.log(connection);
     connection.onopen = function () {
@@ -198,9 +198,15 @@ function cluelistItem(clueKey, q, length){
 
 function onmouseoverCrosswordCell() {
 	var cellClues = this.classList.toLocaleString().split(" ").filter(function (x) { return x.match("[0-9]+[ad]")==x; });
-	cellClues.forEach(function (y){ $("."+y).addClass('highlighted'); y});
-	if(cellClues.length==1)
-			this.onclick = function (){ enterGuess(cellClues[0]); }
+	cellClues.forEach(function (y){ $("."+y).addClass('highlighted'); $("#clues ."+y)[0].scrollIntoViewIfNeeded(); });
+	if(cellClues.length==1){
+		this.onclick = function (){ enterGuess(cellClues[0]); }
+	} else {
+		this.onclick = function (){
+			if(currentClue == cellClues[0])	enterGuess(cellClues[1]);
+			else	enterGuess(cellClues[0]);
+		}
+	}
 }
 
 function onmouseoutCrosswordCell() {

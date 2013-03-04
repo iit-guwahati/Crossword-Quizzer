@@ -125,10 +125,12 @@ form {
 }
 
 .playerName {
-	font-size: 30px;
+	width: 100px;
+	font-size: 20px;
 }
 
 .playerStatus {
+	width: 100px;
 	font-size: 15px;
 }
 
